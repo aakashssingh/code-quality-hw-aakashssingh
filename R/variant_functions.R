@@ -74,7 +74,7 @@ summarize_variant <- function(genotypes, min_maf = 0.25,
     
     
     # Logical TRUE exactly when there is at least one called genotype, MAF is at least min_maf, and missing rate is at most max_missing. Otherwise FALSE.
-    keep <- n_called >= 1 && maf > min_maf && missing_rate <= max_missing
+    keep <- n_called >= 1 && maf >= min_maf && missing_rate <= max_missing
     
     data.frame(n_called = n_called, missing_rate = missing_rate, maf = maf, keep = keep)
     
