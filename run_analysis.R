@@ -5,4 +5,32 @@
 # Put the thresholds in named settings and pass them as function arguments.
 # Source R/variant_functions.R to load your function definitions.
 
-stop("TODO: implement the analysis driver")
+
+# Invented teaching data. Run from the repository root.
+source("R/variant_functions.R")
+
+# read in data
+genotypes <- read.csv("data/genotypes.csv", colClasses = "numeric")
+
+# filtering thresholds
+maf_threshold <- 0.25
+missing_threshold <- 0.25
+
+# create summary_rows 
+summary_rows <- list()
+
+for(i in seq_len(ncol(genotypes))) {
+    
+    variant_summary <- summarize_variant(genotypes[[i]],
+                                         min_maf = maf_threshold,
+                                         max_missing = missing_threshold)
+    summary_rows[[i]] <- data.frame(variant_id = names(genotypes)[i], variant_summary)
+    
+    summary_table <- do.call(rbind, summary_rows)
+    
+    # Make the folder.
+    dir.create("results", showWarnings=FALSE)
+    
+    # Write it without quotes, with commas, and with no row names.
+    write.table(summary_table,"results/summary.csv",sep=",",quote=FALSE,row.names=FALSE)
+}
