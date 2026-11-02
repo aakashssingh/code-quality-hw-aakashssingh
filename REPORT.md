@@ -1,11 +1,11 @@
 # Code quality and testing report
 
 ## Repository and tested revision
-Repository URL:
-Final commit identifier:
-Final passing Actions run URL:
-Deliberate test-failure run URL:
-Repair run URL:
+Repository URL: https://github.com/aakashssingh/code-quality-hw-aakashssingh
+Final commit identifier: final commit
+Final passing Actions run URL: https://github.com/aakashssingh/code-quality-hw-aakashssingh/actions/runs/41445347464
+Deliberate test-failure run URL: https://github.com/aakashssingh/code-quality-hw-aakashssingh/actions/runs/41444250780
+Repair run URL: https://github.com/aakashssingh/code-quality-hw-aakashssingh/actions/runs/41444562022
 
 ## Design changes
 Explain three meaningful changes and why they improve the code. Include one
@@ -32,6 +32,3 @@ rather than the test needed to change. Describe the repair.
 
 The code change I made was changing maf >= min_maf to maf > min_maf in the summarize_variant() function. This makes the maf threshold exclusive and will drop rows that have the same maf as the input threshold. So a variant with maf 0.25 would get dropped if the threshold was set at 0.25
 
-deliberate error: https://github.com/aakashssingh/code-quality-hw-aakashssingh/actions/runs/41444250780
-
-fixed url: https://github.com/aakashssingh/code-quality-hw-aakashssingh/actions/runs/41444562022
